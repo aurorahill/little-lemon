@@ -1,13 +1,17 @@
 import './App.css';
+import Header from './components/Header';
+import Nav from './components/Nav';
+import Main from './components/Main';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="App">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem,
-      cumque laboriosam aliquid accusantium in placeat, dignissimos nostrum
-      aspernatur autem obcaecati expedita quasi quia, sequi culpa aperiam.
-      Facilis eos dolores atque.
-    </div>
+    <>
+      <Nav />
+      <Header />
+      <Main />
+      <Footer />
+    </>
   );
 }
 
