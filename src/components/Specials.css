@@ -1,0 +1,30 @@
+.specials {
+  margin: 0 auto;
+  padding: 0 2rem;
+  max-width: 1200px;
+}
+
+.specials .specials__text {
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.specials .specials__title {
+  font-size: 3rem;
+  font-family: var(--secondary-font);
+}
+
+@media (min-width: 768px) {
+  .specials .specials__cards {
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+  .specials .specials__title {
+    font-size: 4rem;
+    font-family: var(--secondary-font);
+  }
+}

@@ -1,0 +1,9 @@
+.main {
+  margin-top: var(--nav-height);
+}
+
+@media (min-width: 576px) {
+  .main {
+    margin-top: calc(var(--nav-height) * 2);
+  }
+}
