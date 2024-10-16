@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav';
 import Homepage from './components/pages/Homepage';
 import About from './components/pages/About';
-import Reservation from './components/pages/Reservation';
+import Reservation from './components/pages/BookingPage';
 import Order from './components/pages/Order';
 import Login from './components/pages/Login';
 import Confirmation from './components/pages/Confirmation';

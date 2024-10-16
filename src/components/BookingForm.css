@@ -1,0 +1,45 @@
+.res-form-title {
+  background-color: var(--background-color);
+  text-align: center;
+  font-size: 2.4rem;
+  padding: 4rem 2rem 0;
+}
+.res-form {
+  padding: 4rem 2rem;
+  display: grid;
+  gap: 20px;
+  justify-content: center;
+  background-color: var(--background-color);
+}
+
+.res-form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.res-form label {
+  display: inline-block;
+  padding-bottom: 4px;
+  font-size: 1.8rem;
+}
+
+.res-form input,
+.res-form select,
+.res-form textarea {
+  padding: 5px 2px;
+  font-size: 1.6rem;
+  width: 250px;
+  font-family: var(--main-font);
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+.res-form__req-fields {
+  font-size: 1.4rem;
+  padding-top: 2rem;
+}
+
+.res-button {
+  width: 250px;
+  text-align: center;
+}

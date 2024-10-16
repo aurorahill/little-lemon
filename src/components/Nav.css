@@ -69,9 +69,9 @@
     position: fixed;
     top: 0;
     right: -100%;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(16px);
     width: 50%;
     height: 100%;
     padding: 4rem 1rem 0;
