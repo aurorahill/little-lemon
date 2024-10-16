@@ -1,0 +1,27 @@
+.testimonial-card {
+  margin: 0 6rem 4rem;
+  padding: 2rem;
+  background-color: var(--background-color);
+  border-radius: 16px;
+  height: 90%;
+}
+
+.testimonial-card .testimonial-card__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.testimonial-card .testimonial-card__name {
+  padding-left: 1rem;
+  font-size: 1.8rem;
+}
+
+.testimonial-card .testimonial-card__testimonial {
+  padding: 2rem 0;
+  font-size: 1.6rem;
+}
+
+.splide__pagination__page.is-active {
+  background: var(--yellow-color) !important;
+}

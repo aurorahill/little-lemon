@@ -1,4 +1,5 @@
 .special-card {
+  position: relative;
   margin-bottom: 4rem;
   border-radius: 16px;
   background-color: var(--background-color);
@@ -32,7 +33,12 @@
 
 .special-card__text p {
   font-size: 1.6rem;
-  margin-bottom: 2rem;
+  margin-bottom: 6rem;
+}
+
+.special-card__btn {
+  position: absolute;
+  bottom: 2rem;
 }
 
 @media (min-width: 768px) {
