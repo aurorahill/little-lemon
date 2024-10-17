@@ -19,7 +19,7 @@ describe('Reservation component', () => {
   });
 
   it('should update available times correctly when date changes', () => {
-    const mockDate = new Date(2022, 5, 15); // Przykładowa data
+    const mockDate = new Date(2024, 12, 15);
     const mockTimes = ['17:00', '17:30', '18:00'];
 
     fetchAPI.mockReturnValue(mockTimes);

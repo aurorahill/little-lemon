@@ -16,7 +16,7 @@ const Header = () => {
           </p>
           <Link
             className="button"
-            to="/reservations"
+            to="/reservation"
           >
             Reserve a table
           </Link>

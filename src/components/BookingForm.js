@@ -11,12 +11,27 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
   const [occasion, setOccasion] = useState('');
   const [comment, setComment] = useState('');
 
+  function validateEmail(email) {
+    const regexp =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regexp.test(email);
+  }
+
   function handleDateChange(e) {
     const newDate = e.target.value;
     setDate(newDate);
-
     dispatch({ type: 'UPDATE', payload: new Date(newDate) });
   }
+
+  const getIsFormValid = () => {
+    return (
+      name.length > 2 &&
+      validateEmail(email) &&
+      guests < 11 &&
+      guests > 0 &&
+      date
+    );
+  };
 
   function handleTimeChange(e) {
     setSelectedTime(e.target.value);
@@ -24,7 +39,12 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    window.confirm('Are you sure?');
+    if (
+      !window.confirm(
+        'The table will be booked right away. Are you sure all the details are correct?'
+      )
+    )
+      return;
 
     const formData = {
       name,
@@ -61,7 +81,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             id="name"
             placeholder="Name"
             required
-            minLength={2}
+            minLength={3}
             maxLength={50}
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -115,14 +135,18 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             value={selectedTime}
             onChange={handleTimeChange}
           >
-            {availableTimes.map((time) => (
-              <option
-                key={time}
-                value={time}
-              >
-                {time}
-              </option>
-            ))}
+            {availableTimes && availableTimes.length > 0 ? (
+              availableTimes.map((time) => (
+                <option
+                  key={time}
+                  value={time}
+                >
+                  {time}
+                </option>
+              ))
+            ) : (
+              <option>No available times</option>
+            )}
           </select>
         </div>
 
@@ -151,12 +175,26 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         </div>
 
         <div>
-          <button
-            type="submit"
-            className="button res-button"
-          >
-            Book a table
-          </button>
+          {!getIsFormValid() ? (
+            <button
+              type="submit"
+              className="button res-button"
+              style={{
+                backgroundColor: '#a0a0a0',
+                border: '1px solid #a0a0a0',
+                color: 'rgb(70, 70, 70)',
+              }}
+            >
+              Book a table
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="button res-button"
+            >
+              Book a table
+            </button>
+          )}
           <p className="res-form__req-fields">Fields with * are required!</p>
         </div>
       </form>

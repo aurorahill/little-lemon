@@ -37,6 +37,7 @@
 .res-form__req-fields {
   font-size: 1.4rem;
   padding-top: 2rem;
+  color: red;
 }
 
 .res-button {
