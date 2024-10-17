@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './BookingForm.css';
 
 const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
-  // Stan formularza
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [guests, setGuests] = useState('');
@@ -10,6 +9,13 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
   const [selectedTime, setSelectedTime] = useState('');
   const [occasion, setOccasion] = useState('');
   const [comment, setComment] = useState('');
+
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    guests: '',
+    date: '',
+  });
 
   function validateEmail(email) {
     const regexp =
@@ -21,17 +27,11 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
     const newDate = e.target.value;
     setDate(newDate);
     dispatch({ type: 'UPDATE', payload: new Date(newDate) });
+    setErrors((prev) => ({
+      ...prev,
+      date: newDate ? '' : 'Please select a date.',
+    }));
   }
-
-  const getIsFormValid = () => {
-    return (
-      name.length > 2 &&
-      validateEmail(email) &&
-      guests < 11 &&
-      guests > 0 &&
-      date
-    );
-  };
 
   function handleTimeChange(e) {
     setSelectedTime(e.target.value);
@@ -39,13 +39,36 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+
+    const newErrors = {};
+    if (name.length < 3)
+      newErrors.name = 'Name must be at least 3 characters long.';
+    if (!validateEmail(email)) newErrors.email = 'Please enter a valid email.';
+    if (guests < 1 || guests > 10)
+      newErrors.guests = 'Guests number must be between 1 and 10.';
+    if (!date) newErrors.date = 'Please select a date.';
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length > 0) {
+      return;
+    }
+
     if (
       !window.confirm(
         'The table will be booked right away. Are you sure all the details are correct?'
       )
     )
       return;
-
+    console.log('Form data:', {
+      name,
+      email,
+      guests,
+      date,
+      selectedTime,
+      occasion,
+      comment,
+    });
     const formData = {
       name,
       email,
@@ -55,7 +78,6 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
       occasion,
       comment,
     };
-    console.log(formData);
 
     submitForm(formData);
     setName('');
@@ -84,8 +106,22 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             minLength={3}
             maxLength={50}
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              setName(e.target.value);
+              setErrors((prev) => ({
+                ...prev,
+                name:
+                  e.target.value.length < 3
+                    ? 'Name must be at least 3 characters long.'
+                    : '',
+              }));
+            }}
           />
+          {errors.name && (
+            <p style={{ color: 'red', fontSize: '1.4rem', paddingTop: '5px' }}>
+              {errors.name}
+            </p>
+          )}
         </div>
 
         <div>
@@ -98,8 +134,21 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             minLength={4}
             maxLength={40}
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setErrors((prev) => ({
+                ...prev,
+                email: !validateEmail(e.target.value)
+                  ? 'Please enter a valid email.'
+                  : '',
+              }));
+            }}
           />
+          {errors.email && (
+            <p style={{ color: 'red', fontSize: '1.4rem', paddingTop: '5px' }}>
+              {errors.email}
+            </p>
+          )}
         </div>
 
         <div>
@@ -112,8 +161,22 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             min={1}
             max={10}
             value={guests}
-            onChange={(e) => setGuests(e.target.value)}
+            onChange={(e) => {
+              setGuests(parseInt(e.target.value, 10)); // Zapewniamy, że wartość jest liczbą
+              setErrors((prev) => ({
+                ...prev,
+                guests:
+                  e.target.value < 1 || e.target.value > 10
+                    ? 'Guests number must be between 1 and 10.'
+                    : '',
+              }));
+            }}
           />
+          {errors.guests && (
+            <p style={{ color: 'red', fontSize: '1.4rem', paddingTop: '5px' }}>
+              {errors.guests}
+            </p>
+          )}
         </div>
 
         <div>
@@ -125,6 +188,11 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             value={date}
             onChange={handleDateChange}
           />
+          {errors.date && (
+            <p style={{ color: 'red', fontSize: '1.4rem', paddingTop: '5px' }}>
+              {errors.date}
+            </p>
+          )}
         </div>
 
         <div>
@@ -175,26 +243,19 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         </div>
 
         <div>
-          {!getIsFormValid() ? (
-            <button
-              type="submit"
-              className="button res-button"
-              style={{
-                backgroundColor: '#a0a0a0',
-                border: '1px solid #a0a0a0',
-                color: 'rgb(70, 70, 70)',
-              }}
-            >
-              Book a table
-            </button>
-          ) : (
-            <button
-              type="submit"
-              className="button res-button"
-            >
-              Book a table
-            </button>
-          )}
+          <button
+            type="submit"
+            className="button res-button"
+            disabled={
+              !name ||
+              !email ||
+              !guests ||
+              !date ||
+              Object.keys(errors).some((key) => errors[key])
+            }
+          >
+            Book a table
+          </button>
           <p className="res-form__req-fields">Fields with * are required!</p>
         </div>
       </form>
