@@ -17,7 +17,7 @@ const Footer = () => {
             <ul className="footer__list">
               <li className="footer__item">
                 <Link
-                  to="/"
+                  to="/little-lemon"
                   className="footer__link"
                 >
                   Home
@@ -25,7 +25,7 @@ const Footer = () => {
               </li>
               <li className="footer__item">
                 <Link
-                  to="/about"
+                  to="/little-lemon/about"
                   className="footer__link"
                 >
                   About
@@ -43,7 +43,7 @@ const Footer = () => {
               </li>
               <li className="footer__item">
                 <Link
-                  to="/reservation"
+                  to="/little-lemon/reservation"
                   className="footer__link"
                 >
                   Reservation
@@ -51,7 +51,7 @@ const Footer = () => {
               </li>
               <li className="footer__item">
                 <Link
-                  to="/order"
+                  to="/little-lemon/order"
                   className="footer__link"
                 >
                   Order
@@ -59,7 +59,7 @@ const Footer = () => {
               </li>
               <li className="footer__item">
                 <Link
-                  to="/login"
+                  to="/little-lemon/login"
                   className="footer__link"
                 >
                   Login

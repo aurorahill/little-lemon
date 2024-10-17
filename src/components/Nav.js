@@ -21,7 +21,7 @@ const Nav = () => {
     <nav className="nav">
       <div className="nav__container">
         <NavLink
-          to="/"
+          to="/little-lemon"
           className="nav__logo"
         >
           <img
@@ -36,7 +36,7 @@ const Nav = () => {
           <ul className="nav__list">
             <li className="nav__item">
               <NavLink
-                to="/"
+                to="/little-lemon"
                 className="nav__link"
                 onClick={closeMenuOnMobile}
               >
@@ -45,7 +45,7 @@ const Nav = () => {
             </li>
             <li className="nav__item">
               <NavLink
-                to="/about"
+                to="/little-lemon/about"
                 className="nav__link"
                 onClick={closeMenuOnMobile}
               >
@@ -65,7 +65,7 @@ const Nav = () => {
             </li>
             <li className="nav__item">
               <NavLink
-                to="/reservation"
+                to="/little-lemon/reservation"
                 className="nav__link"
                 onClick={closeMenuOnMobile}
               >
@@ -74,7 +74,7 @@ const Nav = () => {
             </li>
             <li className="nav__item">
               <NavLink
-                to="/order"
+                to="/little-lemon/order"
                 className="nav__link"
                 onClick={closeMenuOnMobile}
               >
@@ -83,7 +83,7 @@ const Nav = () => {
             </li>
             <li className="nav__item">
               <NavLink
-                to="/login"
+                to="/little-lemon/login"
                 className="nav__link"
                 onClick={closeMenuOnMobile}
               >

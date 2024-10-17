@@ -18,7 +18,7 @@ const SpecialCard = (props) => {
         <p>{props.description}</p>
         <Link
           className="special-card__btn button"
-          to="/order"
+          to="/little-lemon/order"
         >
           Order for Delivery
         </Link>

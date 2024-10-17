@@ -15,31 +15,31 @@ function App() {
       <Nav />
       <Routes>
         <Route
-          path="/"
+          path="/little-lemon"
           element={<Homepage />}
         />
 
         <Route
-          path="/about"
+          path="/little-lemon/about"
           element={<About />}
         />
 
         <Route
-          path="/reservation"
+          path="/little-lemon/reservation"
           element={<Reservation />}
         />
 
         <Route
-          path="/order"
+          path="/little-lemon/order"
           element={<Order />}
         />
         <Route
-          path="/login"
+          path="/little-lemon/login"
           element={<Login />}
         />
 
         <Route
-          path="/confirmation"
+          path="/little-lemon/confirmation"
           element={<Confirmation />}
         />
       </Routes>

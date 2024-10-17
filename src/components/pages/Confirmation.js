@@ -26,7 +26,7 @@ const Confirmation = () => {
           You booked a table! All information will be sent to your email!
         </p>
         <Link
-          to="/"
+          to="/little-lemon"
           className="button"
           style={{ marginBottom: '2rem', fontSize: '2.4rem' }}
         >

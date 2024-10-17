@@ -28,7 +28,7 @@ const Reservation = () => {
   const submitForm = (formData) => {
     const isSubmitted = submitAPI(formData);
     if (isSubmitted) {
-      navigate('/confirmation');
+      navigate('/little-lemon/confirmation');
     }
   };
 
